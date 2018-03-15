@@ -1,0 +1,207 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <title>Cookbook</title>
+    <link rel="stylesheet" type="text/css" href="~/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/font-awesome-4.5.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/c3.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/Buttons.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/ProektStyle.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/autocomplete.css" />
+    
+</head>
+<body runat="server">
+    
+    <form id="form1" runat="server">
+
+        <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle navbartoggle-orange" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar icon-bar-white"></span>
+                        <span class="icon-bar icon-bar-white"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a data-ember-action="282" class="navbar-brand brand" runat="server" href="~/Homepage.aspx">
+                        <img runat="server" width="150"  height="40" src="~/Images/categoryImages/Logo_White.png" />
+                    </a>
+                </div>
+                <div>
+
+      
+      
+                   
+                
+</div>
+        
+              
+                          
+                <div class="collapse navbar-collapse">
+
+        
+
+
+                    <div class="navbar-form navbar-left" role="search" style="padding-top: 5px;">
+                        <div class="form-group">
+                            <asp:TextBox CssClass="ember-view ember-text-field form-control type-ahead gracipe-search-form tt-input" runat="server" ID="autocomplete" placeholder="Search recipes..." />
+                        </div>
+                    </div>
+                    <a style="margin-left: -15px; padding-top: 13px;" id="searchIcon" href="#" data-ember-action="298" runat="server" onserverclick="searchIcon_OnClick" class="glyphicon glyphicon-search"></a>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+
+                            <asp:LoginView ID="homeView" runat="server">
+                                <AnonymousTemplate>
+                                    <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Login.aspx">Login</asp:HyperLink>
+                                </AnonymousTemplate>
+                                <LoggedInTemplate>
+                                    <div class="dropdown">
+                                        <button class="btn dropdown-toggle" style="background-color: transparent; font-size: large; padding: 15px 50px; font-weight: bold; font-style: oblique" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                            <span class="fa fa-user"></span>&nbsp; 
+                    <span class="caret"></span>&nbsp;
+                    <asp:LoginName ID="loginName" runat="server" />
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-block" aria-labelledby="dropdownMenu2">
+                                            <li>
+                                                <asp:HyperLink ID="hyperProfile" runat="server" Style="font-weight: bold; color: white" NavigateUrl="~/ProfilePage.aspx">My profile</asp:HyperLink></li>
+                                            <li>
+                                                <asp:HyperLink ID="HyperLink1" runat="server" Style="font-weight: bold; color: white" NavigateUrl="~/User/ChangePassword.aspx">Change password</asp:HyperLink></li>
+                                            <li>
+                                                <asp:LoginStatus ID="loginStatusUser" Style="font-weight: bold; color: white" runat="server" />
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </LoggedInTemplate>
+                                <RoleGroups>
+                                    <asp:RoleGroup Roles="admin">
+                                        <ContentTemplate>
+                                            <div class="dropdown" runat="server">
+                                                <button runat="server" class="btn dropdown-toggle" style="background-color: transparent; font-size: large; padding: 15px 50px; font-weight: bold; font-style: oblique" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                                                    <span class="fa fa-user-plus"></span>
+                                                    <span class="caret"></span>
+                                                    Admin
+                                                </button>
+                                                <ul runat="server" class="dropdown-menu dropdown-block" aria-labelledby="dropdownMenu1">
+                                                    <li>
+                                                        <asp:HyperLink ID="btnManage" Style="font-weight: bold; color: white" runat="server" NavigateUrl="~/Admin/Adminpage.aspx">Manage recipes</asp:HyperLink></li>
+                                                    <li>
+                                                        <asp:LoginStatus ID="LoginStatus1" Style="font-weight: bold; color: white" runat="server" LogoutPageUrl="~/Homepage.aspx" />
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </ContentTemplate>
+                                    </asp:RoleGroup>
+                                </RoleGroups>
+                            </asp:LoginView>
+
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+        </nav>
+       
+        <!--NAVBAR-->
+
+        <asp:ContentPlaceHolder ID="mainContent" runat="server">
+            <%--<h2>This is default content</h2>--%>
+        </asp:ContentPlaceHolder>
+
+
+        <footer class="footer-distributed">
+
+            <div class="container">
+                <div class="col-lg-4 footer-left">
+                    <img runat="server" src="~/Images/categoryImages/Logo_Orange.png" width="250" height="80" />
+                    <p class="footer-links">
+                        <a href="#">Home</a>
+                        ·
+                <a href="#">Log In</a>
+                        ·
+                <a href="#">Register</a>
+                        ·
+                <a href="#">Categories</a>
+                        ·
+                <a href="#">Contact</a>
+                    </p>
+
+                    <p class="footer-company-name">CookBook &copy; 2016</p>
+                </div>
+                <div class="col-lg-4 footer-center">
+                    <div>
+                        <i class="fa fa-map-marker"></i>
+                        <p><span>2 Nikola Tesla</span> Skopje, Macedonia</p>
+                    </div>
+
+                    <div>
+                        <i class="fa fa-phone"></i>
+                        <p>+389 75 713 761</p>
+                    </div>
+
+                    <div>
+                        <i class="fa fa-envelope"></i>
+                        <p><a href="mailto:support@company.com">support@cookbook.com</a></p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <p class="footer-company-about">
+                        <h3 style="color: #feaa26; font-weight: bold;">About us</h3>
+                        Dajana Velichkovska
+                        <br />
+                        Martina Denkovikj
+                        <br />
+                        Hristina Petkovska
+                        <br />
+                        Kristijan Laskovski
+                        <br />
+                    </p>
+
+                    <div class=" footer-right">
+                        <ul class="social-network social-circle">
+                            <li><a href="#" class="icoFacebook link-social-cirlce-backround" title="Facebook"><i class="fa fa-facebook" style="width:40px;"></i></a></li>
+                            <li><a href="#" class="icoTwitter link-social-cirlce-backround" title="Twitter"><i class="fa fa-twitter" style="width:40px;"></i></a></li>
+                            <li><a href="#" class="icoGoogle link-social-cirlce-backround" title="Google +"><i class="fa fa-google-plus" style="width:40px;"></i></a></li>
+                            <li><a href="#" class="icoLinkedin link-social-cirlce-backround" title="Linkedin"><i class="fa fa-linkedin" style="width:40px;"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+
+    </form>
+    
+    <script type="text/javascript" src="<%=ResolveUrl("~/js/jquery-2.2.0.min.js")%>"></script>
+    <script type="text/javascript" src="<%=ResolveUrl("~/js/bootstrap.min.js")%>"></script>
+    <script type="text/javascript" src="<%=ResolveUrl("~/js/d3.min.js")%>"></script>
+    <script type="text/javascript" src="<%=ResolveUrl("~/js/c3.min.js")%>"></script>
+    <script type="text/javascript" src="<%=ResolveUrl("~/js/pinterestscript.js")%>"></script>
+     <script type="text/javascript" src="<%=ResolveUrl("~/js/newpinterest.js")%>"></script>
+    <!--facebook-->
+    <script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
+    <script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>
+    <!--facebook-->
+    <script src="js/jquery-ui-1.8.custom.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+       $(document).ready(function () {
+           var result = "<%=autoComplete()%>";
+           var niza = result.split(";");
+          
+           console.dir("EVE MI GO REZULTATOT: ");
+           $("input#autocomplete").autocomplete({
+               source: niza
+           });
+
+       
+       });
+    </script>
+</body>
+</html>
+
